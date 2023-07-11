@@ -4,12 +4,12 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { formData } from '.././type';
 
-import {
-  CdkDragDrop,
-  CdkDrag,
-  CdkDropList,
-  moveItemInArray,
-} from '@angular/cdk/drag-drop';
+// import {
+//   CdkDragDrop,
+//   CdkDrag,
+//   CdkDropList,
+//   moveItemInArray,
+// } from '@angular/cdk/drag-drop';
 import { debounceTime } from 'rxjs';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
