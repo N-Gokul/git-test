@@ -1,0 +1,66 @@
+/*  ************************************Jeeva 25-06-2023 Created AngularJS CSS file**********************************  */
+/* for form section */
+.form,
+.tables_display {
+    border: 2px solid grey;
+    padding: 5%;
+    border-radius: 15px;
+    margin-top: 0%;
+    color: rgb(110, 108, 108);
+    /* background-image: url('./assets/star.png') , url('./assets/mon.png'); */
+    /* background-blend-mode: luminosity; */
+    /* background-size: cover; */
+    box-shadow: 20px 20px 15px rgb(197, 196, 196);
+}
+
+.form_titles {
+    color: rgb(10, 10, 12);
+    font-weight: 500;
+}
+
+.tables_display {
+    padding-top: 3%;
+}
+
+
+
+/* for main section */
+.sec {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* background-color: black; */
+    margin: 0%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+/* for every row */
+.rowstyle {
+    padding-top: 2%;
+}
+
+/* For table */
+#myTable {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* table-layout: fixed; */
+    /* margin-top: 5%; */
+}
+
+
+/* html, body { height: 100%; }
+body { margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; } */
+.inputs {
+    padding: 6%;
+}
+
+
+.mat-mdc-icon-button.mat-mdc-button-base {
+    bottom: 42px;
+    left: 185px;
+    /* background-color: black; */
+    border: 2xp solid red;
+}
+
+.mat-calendar-controls .mat-mdc-icon-button.mat-mdc-button-base {
+    left: 0%;
+    bottom: 0%;
+}

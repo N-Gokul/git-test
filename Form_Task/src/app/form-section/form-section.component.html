@@ -1,0 +1,288 @@
+  <!-- section for form start -->
+
+  <!-- <div class="container-fluid">
+    <h1>Form</h1>
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text"
+          [class.is-invalid]="registrationForm.get('Name')?.invalid && registrationForm.get('Name')?.touched"
+          formControlName='Name' id="Name" class="form-control">
+
+      </div>
+
+      <div *ngIf="registrationForm.get('Name')?.invalid && registrationForm.get('Name')?.touched">
+        <small [class.d-none]="registrationForm.get('Name')?.errors?.['required'] ">Minimum 3 characters</small>
+        <small [class.d-none]="registrationForm.get('Name')?.errors?.['minlength']">Required</small>
+      </div>
+
+      <div class="form-group">
+        <label>Username</label>
+        <input
+          [class.is-invalid]="registrationForm.get('userName')?.invalid && registrationForm.get('userName')?.touched"
+          type="text" formControlName="userName" class="form-control">
+
+      </div>
+      <div *ngIf="registrationForm.get('userName')?.invalid && registrationForm.get('userName')?.touched">
+        <small [class.d-none]="registrationForm.get('userName')?.errors?.['required']">Minimum 3 characters</small>
+        <small [class.d-none]="registrationForm.get('userName')?.errors?.['minlength']">Required</small>
+      </div>
+
+      <button class="btn btn-success my-3" (click)="onSubmit()">Register</button>
+
+      <button class="btn btn-secondary my-3" (click)="addTable()" type="button">Add in table</button>
+    </form>
+  </div>
+  <app-table-section [parentData]="master"></app-table-section> -->
+
+  <!-- {{registrationForm.value | json}} -->
+
+  <!-- ***********************************Jeeva 05-07-2023 Created Form section html  ***************************-->
+
+  <section class="sec">
+    <div class="container my-5 form">
+      <!-- <h1>Form Validation</h1> -->
+      <!-- <hr> -->
+      <!-- form start -->
+      <hr>
+      <form [formGroup]="registrationForm" (change)="progressBar()" (ngSubmit)="registrationForm.valid && onSubmit()"
+        novalidate>
+        <!-- <form name="formdata" ng-model="myform" ng-submit="formdata.$valid && submit()" novalidate> -->
+        <div class="container">
+          <h1 class="form_titles">
+            Personal Details
+          </h1>
+          <!-- Row 1 start -->
+          <div class="row form_divs">
+            <div class="col-3">
+              <div class="mb-3 inputs_every">
+                <div class="form-group">
+                  <label class="form-label">Name</label>
+                  <input type="text" formControlName='Name' [class.nothing]="registrationForm.pristine"
+                    [class.is-valid]="registrationForm.get('Name')?.valid"
+                    [class.is-invalid]="registrationForm.get('Name')?.invalid && registrationForm.get('Name')?.touched && !registrationForm.get('Name')?.pristine"
+                    class="form-control ">
+                </div>
+                <div *ngIf="registrationForm.get('Name')?.valid">
+                  <p class="text-success"> Looks good!</p>
+                </div>
+                <div
+                  *ngIf="registrationForm.get('Name')?.invalid && registrationForm.get('Name')?.touched && !registrationForm.get('Name')?.pristine">
+                  <small [class.d-none]="!registrationForm.get('Name')?.errors?.['required'] "
+                    class="text-danger">Required </small>
+                  <small [class.d-none]="!registrationForm.get('Name')?.errors?.['minlength']"
+                    class="text-danger">Minimum 3
+                    characters</small>
+                  <small [class.d-none]="!registrationForm.get('Name')?.errors?.['maxlength']" class="text-danger">Max
+                    10 characters allowed</small>
+                  <small [class.d-none]="!registrationForm.get('Name')?.errors?.['pattern']" class="text-danger">Should
+                    only consist of letters </small>
+                  <!-- Name : {{Name.valid}} -->
+                </div>
+                <!-- ***************************************** -->
+
+
+                <!-- <label for="exampleInputPassword1" class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" ng-pattern="/^[ a-z, A-Z .]{5,25}$/"
+                  ng-model="form.name" required>
+                <span style="color:rgb(221, 125, 125)" ng-show="formdata.name.$error.pattern">Only alphabet Allowed ,
+                  minimum 5 character needed</span> -->
+                <!-- <i class="material-icons right icon" id="valid">check</i>
+              <i class="material-icons right icon" id="wrong">close</i> -->
+              </div>
+            </div>
+            <div class="col-3 form-group">
+              <div class="mb-3 inputs_every">
+                <label for="exampleInputPassword1" class="form-label">DOB</label>
+                <!-- <input type="date" formControlName="date" class="form-control" [max]="maxDateBirth" (change)="agecal()"
+                  required> -->
+
+                <!-- <mat-form-field style="width: 90%;"> -->
+                <!-- <mat-label>Choose a date</mat-label> -->
+                <input class="form-control" matInput [matDatepicker]="picker" formControlName="DOB"
+                  (dateChange)="agecal($event.value)" [max]="maxDateBirth" required readonly>
+                <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker startView="multi-year"></mat-datepicker>
+                <!-- </mat-form-field> -->
+                <!-- max="{{ tillDate }}" -->
+              </div>
+            </div>
+            <div class="col-3 form-group">
+              <div class="mb-3 inputs_every">
+                <label for="exampleInputEmail1" class="form-label">Age</label>
+                <input type="number" class="form-control" placeholder="DOB required" formControlName="Age" readonly>
+
+              </div>
+            </div>
+            <div class="col-3 form-group">
+              <div class="mb-3 inputs_every">
+                <label class="form-label gen">Gender</label> <br>
+                <input class="form-check-input" type="radio" name="Gender" formControlName="Gender" value="M" required>
+                M
+                <input class="form-check-input" type="radio" name="Gender" formControlName="Gender" value="F" required>
+                F
+              </div>
+            </div>
+          </div>
+          <!-- Row 1 end -->
+
+          <!-- Row 2 start -->
+          <h1 class="form_titles">Education Details</h1>
+          <div class="row form_divs">
+            <div class="col-6">
+              <div class="mb-3 inputs_every">
+
+
+                <!-- ********************************* -->
+                <div class="form-group">
+                  <label class="form-label">College Name</label>
+                  <!-- <input type="text" [class.is-valid]="registrationForm.get('CollegeName')?.valid "
+                    [class.is-invalid]="registrationForm.get('CollegeName')?.invalid && registrationForm.get('CollegeName')?.touched && !registrationForm.get('CollegeName')?.pristine"
+                    formControlName='CollegeName' class="form-control"> -->
+                  <select formControlName='Degree' class="form-select">
+                    <option class="form-select" *ngFor="let x of universityList">{{x}}</option>
+                  </select>
+                </div>
+                <!-- <div *ngIf="registrationForm.get('CollegeName')?.valid" >
+                  <p class="text-success"> Looks good!</p>
+                 </div>
+                <div
+                  *ngIf="registrationForm.get('CollegeName')?.invalid && registrationForm.get('CollegeName')?.touched && !registrationForm.get('CollegeName')?.pristine">
+                  <small [class.d-none]="!registrationForm.get('CollegeName')?.errors?.['required'] "
+                    class="text-danger">Required</small>
+                  <small [class.d-none]="!registrationForm.get('CollegeName')?.errors?.['minlength']"
+                    class="text-danger">Minimum 3
+                    characters</small>
+                    <small [class.d-none]="!registrationForm.get('CollegeName')?.errors?.['maxlength']"
+                    class="text-danger">Max 10 characters allowed</small>
+                  <small [class.d-none]="!registrationForm.get('CollegeName')?.errors?.['pattern']"
+                    class="text-danger">Should
+                    only consist of letters </small>
+                </div> -->
+                <!-- ***************************************** -->
+
+                <!-- <label for="exampleInputPassword1" class="form-label">College Name</label>
+                <input type="text" class="form-control" name="CollegeName" ng-pattern="/^[ a-z, A-Z .'']{3,45}$/"
+                  ng-model="form.CollegeName" ng-change="checklen(form.CollegeName)" required>
+                <span style="color:rgb(189, 115, 115)" ng-show="formdata.CollegeName.$error.pattern">Only alphabets Allowed
+                  , minimum 6 character needed</span> -->
+                <!-- <p ng-show="len">short</p> -->
+              </div>
+            </div>
+            <div class="col-6 form-group">
+              <div class="mb-3 inputs_every">
+                <label for="exampleInputPassword1" class="form-label">Degree</label>
+                <select formControlName='Degree' class="form-select">
+                  <option class="form-select" *ngFor="let x of deg">{{x}}</option>
+                </select>
+                <!-- <select formControlName='deg' class="form-select">
+
+                </select>
+                <select formControlName='deg' >
+                  <option *ngFor="let x of deg">{{x}}</option>
+                </select> -->
+              </div>
+            </div>
+          </div>
+          <!-- Row 2 end -->
+
+          <!-- Row 3 start -->
+          <h1 class="form_titles">Job Details</h1>
+          <div class="row form_divs">
+            <div class="col-5 form-group">
+              <div class="mb-3 inputs_every">
+
+
+                <!-- ********************************* -->
+                <div class="form-group">
+                  <label class="form-label">Company name</label>
+                  <input type="text" [class.is-valid]="registrationForm.get('CompanyName')?.valid"
+                    [class.is-invalid]="registrationForm.get('CompanyName')?.invalid && registrationForm.get('CompanyName')?.touched && !registrationForm.get('CompanyName')?.pristine"
+                    formControlName='CompanyName' class="form-control">
+
+                </div>
+                <div *ngIf="registrationForm.get('CompanyName')?.valid">
+                  <p class="text-success"> Looks good!</p>
+                </div>
+                <div
+                  *ngIf="registrationForm.get('CompanyName')?.invalid && registrationForm.get('CompanyName')?.touched && !registrationForm.get('CompanyName')?.pristine">
+                  <small [class.d-none]="!registrationForm.get('CompanyName')?.errors?.['required'] "
+                    class="text-danger">Required </small>
+                  <small [class.d-none]="!registrationForm.get('CompanyName')?.errors?.['minlength']"
+                    class="text-danger">Minimum 3
+                    characters</small>
+                  <small [class.d-none]="!registrationForm.get('CompanyName')?.errors?.['maxlength']"
+                    class="text-danger">Max 10 characters allowed</small>
+                  <small [class.d-none]="!registrationForm.get('CompanyName')?.errors?.['pattern']"
+                    class="text-danger">Should
+                    only consist of letters </small>
+                </div>
+                <!-- ***************************************** -->
+
+
+                <!-- <label for="exampleInputEmail1" class="form-label">Company Name</label>
+                <input type="text" class="form-control" ng-pattern="/^[ a-z, A-Z .']{3,45}$/" name="CompanyName"
+                  ng-model="form.CompanyName" required>
+                <span style="color:rgb(190, 104, 104)" ng-show="formdata.CompanyName.$error.pattern">Only alphabets Allowed
+                  , minimum 6 character needed</span> -->
+              </div>
+            </div>
+            <div class="col-3 form-group">
+              <div class="mb-3 inputs_every">
+                <label for="exampleInputPassword1" class="form-label">DOJ</label><br>
+                <!-- <input type="date" (dateChange)="expcal()" [min]="minDateJoin" [max]="maxDateJoin" class="form-control"
+                  formControlName='joining' required> -->
+
+                <!-- <mat-form-field  > -->
+                <!-- <mat-label>Choose a date</mat-label> -->
+                <input matInput [matDatepicker]="join" formControlName='DOJ' (dateChange)="expcal($event.value)"
+                  [max]="maxDateJoin" [min]="minDateJoin" class="form-control" required readonly>
+                <!-- <mat-hint>DD/MM/YYYY</mat-hint> -->
+                <mat-datepicker-toggle matIconSuffix [for]="join"></mat-datepicker-toggle>
+                <mat-datepicker #join startView="multi-year"></mat-datepicker>
+                <!-- </mat-form-field> -->
+                <!-- max="{{ tillJoinDate }}" min="{{form.date | date : 'yyyy-MM-dd'}}" -->
+              </div>
+            </div>
+            <div class="col-4 form-group">
+              <div class="mb-3 inputs_every">
+                <label for="exampleInputPassword1" class="form-label">Total Years Of Experience</label>
+                <input type="number" class="form-control exp" placeholder="DOJ required" formControlName='Experience'
+                  readonly>
+              </div>
+            </div>
+
+          </div>
+          <!-- Row 3 end -->
+
+          <!-- Row for button start -->
+          <div class="row">
+            <div class="col-4">
+              <!-- <button ng-show="formdata.$valid && vis" type="submit" class="btn btn-success" id="submit">Submit</button> -->
+              <button class="btn btn-success " *ngIf="registrationForm.valid && !isEditClicked">Submit</button>
+
+            </div>
+
+            <div class="col-4">
+              <button type="button" *ngIf="registrationForm.valid && isEditClicked" (click)="update()" id="update"
+                class="btn btn-success">Update</button>
+            </div>
+            <div class="col-4">
+              <button type="button" *ngIf="registrationForm.dirty" class="btn btn-danger"
+                (click)="refresh()">Reset</button>
+            </div>
+
+          </div>
+          <!-- Row for button end -->
+        </div>
+        <!-- Form end -->
+        <mat-progress-bar mode="determinate" [value]="percent"></mat-progress-bar>
+
+      </form>
+
+    </div>
+  </section>
+
+  <app-table-section (eventEmitter)="edit($event)" [isUpdated]="updatedAh" [parentData]="master"></app-table-section>
+  <!-- Section for form end -->

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div ng-app="curdOperationsApp" ng-controller="curdOperationControl">
+        <lable for="country">Country</lable>
+        <select ng-model="country" ng-options="x.Country for x in con ">
+            {{x}}
+        </select>
+        <br><br>
+        <lable for="country">city</lable>
+        <select ng-model="country" ng-options="x.City for x in con ">
+            {{x}}
+        </select>
+        <br><br>
+        {{act}}
+        <br><br>
+        <p>You have selected Country : {{ country.Country | uppercase}}</p>
+        <p>You have selected City : {{country.City | uppercase}}</p>
+        <!-- <lable for="country">Country</lable>
+        <select ng-model="country" ng-options="x.Country for x in countryRecords ">
+            {{x}}
+        </select>
+        <br><br> -->
+        <!-- <label>Country</label>
+        <select id="country" ng-model="country">
+            <option value="India">India</option>
+            <option value="America">America</option>
+        </select>
+
+
+
+        <label>State</label>
+        <select id="state" ng-model="state">
+            <option value="TamilNadu">TamilNadu</option>
+            <option value="Mumbai">Mumbai</option>
+        </select>
+
+
+
+        <label>City</label>
+        <select id="city" ng-model="city">
+            <option value="chennai">chennai</option>
+            <option value="madurai">madurai</option>
+        </select>
+
+        <label>Location</label>
+        <select id="location" ng-model="location">
+            <option value="thiruvarur">thiruvarur</option>
+            <option value="thanjour">thanjour</option>
+        </select>
+        <label> -->
+
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>
