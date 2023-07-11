@@ -1,0 +1,215 @@
+<!-- ************************************Jeeva 25-06-2023 Created AngularJS HTML file********************************** -->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>FormTask</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+
+<body ng-app="initialModule" ng-controller="inittialCtrl">
+
+  <section class="sec">
+    <div class="container  mx-5 form">
+      <h1>Form Validation</h1>
+      <hr>
+      <!-- form start -->
+      <form name="formdata" ng-model="myform" ng-submit="formdata.$valid && submit()" novalidate>
+        <div class="container">
+
+          <!-- Row 1 start -->
+          <div class="row rowstyle">
+            <h3>
+              Personal Details
+            </h3>
+            <div class="col-3">
+              <div class="mb-3 inputs_every">
+                <label for="exampleInputPassword1" class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" ng-pattern="/^[ a-z, A-Z .]{5,25}$/"
+                  ng-model="form.name" required>
+                <span style="color:rgb(221, 125, 125)" ng-show="formdata.name.$error.pattern">Only alphabet Allowed ,
+                  minimum 6 character needed</span>
+
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="mb-3 inputs_every">
+                <label for="exampleInputPassword1" class="form-label">DOB</label>
+                <input type="date" class="form-control" max="{{ tillDate }}" ng-change="agecal(form.date)"
+                  ng-model="form.date" required>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="mb-3 inputs_every">
+                <label for="exampleInputEmail1" class="form-label">Age</label>
+                <input type="number" class="form-control" ng-model="form.age" disabled>
+
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="mb-3 inputs_every">
+                <label class="form-label gen">Gender</label> <br>
+                <input class="form-check-input" type="radio" name="gender" ng-model="form.gender" value="M" required>
+                M
+                <input class="form-check-input" type="radio" name="gender" ng-model="form.gender" value="F" required>
+                F
+              </div>
+            </div>
+          </div>
+          <!-- Row 1 end -->
+
+          <!-- Row 2 start -->
+
+          <div class="row rowstyle">
+            <h3>Education Details</h3>
+            <div class="col-6">
+              <div class="mb-3 inputs_every">
+                <label for="exampleInputPassword1" class="form-label">College Name</label>
+                <input type="text" class="form-control" name="clgname" ng-pattern="/^[ a-z, A-Z .'']{3,45}$/"
+                  ng-model="form.clgName" ng-change="checklen(form.clgName)" required>
+                <span style="color:rgb(189, 115, 115)" ng-show="formdata.clgname.$error.pattern">Only alphabets Allowed
+                  , minimum 6 character needed</span>
+
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="mb-3 inputs_every">
+                <label for="exampleInputPassword1" class="form-label">Degree</label>
+
+                <select class="form-select" ng-model="form.degree" ng-options="x for x in deg" required> {{x}} </select>
+              </div>
+            </div>
+          </div>
+          <!-- Row 2 end -->
+
+          <!-- Row 3 start -->
+
+          <div class="row rowstyle">
+            <h3>Job Details</h3>
+            <div class="col-4">
+              <div class="mb-3 inputs_every">
+                <label for="exampleInputEmail1" class="form-label">Company Name</label>
+                <input type="text" class="form-control" ng-pattern="/^[ a-z, A-Z .']{3,45}$/" name="compname"
+                  ng-model="form.compName" required>
+                <span style="color:rgb(190, 104, 104)" ng-show="formdata.compname.$error.pattern">Only alphabets Allowed
+                  , minimum 6 character needed</span>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 inputs_every">
+                <label for="exampleInputPassword1" class="form-label">DOJ</label>
+                <input type="date" max="{{ tillJoinDate }}" min="{{form.date | date : 'yyyy-MM-dd'}}"
+                  ng-change="expCal(form.DOJdate)" class="form-control" ng-model="form.DOJdate" required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 inputs_every">
+                <label for="exampleInputPassword1" class="form-label">Total Years Of Experience</label>
+                <input type="number" class="form-control" ng-model="form.exp" disabled>
+              </div>
+            </div>
+
+          </div>
+          <!-- Row 3 end -->
+
+          <!-- Row for button start -->
+          <div class="row">
+            <div class="col-4">
+              <button ng-show="formdata.$valid && vis" type="submit" class="btn btn-success" id="submit">Submit</button>
+
+            </div>
+
+            <div class="col-4">
+              <button type="button" ng-show="isVisible && formdata.$valid" ng-click="update()" id="update"
+                class="btn btn-success">Update</button>
+            </div>
+            <div class="col-4">
+              <button type="button" ng-show="!formdata.$pristine  && isfresh" class="btn btn-danger"
+                ng-click="refresh()">Reset</button>
+            </div>
+
+          </div>
+          <!-- Row for button end -->
+        </div>
+        <!-- Form end -->
+      </form>
+    </div>
+  </section>
+
+  <!-- Section for form end -->
+
+  <!-- Section for table start -->
+  <section class="tables_display">
+    <div class="container">
+      <label class="mt-5">Search For item</label>
+      <input type="text" class="form-control" ng-model="search.name">
+      <!-- Table start  -->
+      <table class="table table-hover" id="myTable">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">College Name</th>
+            <th scope="col">Degree</th>
+            <th scope="col">DOB</th>
+            <th scope="col">Age</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Company Name</th>
+            <th scope="col">DOJ</th>
+            <th scope="col">Experience</th>
+            <th scope="col">Activity</th>
+
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <tr ng-repeat="x in master | filter: search ">
+            <td>{{x.name }}</td> 
+            <td>{{x.clgName | titlecase}}</td>
+            <td>{{x.degree}}</td>
+            <td>{{x.date | date}}</td>
+            <td>{{x.age}}</td>
+            <td>{{x.gender}}</td>
+            <td>{{x.compName}}</td>
+            <td>{{x.DOJdate | date}}</td>
+            <td>{{x.exp}}</td>
+
+            <td>
+              <div class="row">
+                <div class="col-6">
+                  <button class="btn btn-success" ng-click="editButton(x)" ng-model="editBtn">Edit</button>
+                </div>
+                <div class="col-6">
+                  <button class="btn btn-danger" ng-click="deleteButton(x)" ng-model="deleteBtn">delete</button>
+                </div>
+              </div>
+
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Table end -->
+    </div>
+
+  </section>
+
+  <!-- Section for table end -->
+  <script src="assets/index.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+  </script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script> -->
+</body>
+
+</html>

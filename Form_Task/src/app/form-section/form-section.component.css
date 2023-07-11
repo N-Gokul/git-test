@@ -1,0 +1,40 @@
+/* gender class */
+/* .gen{
+    margin-right: 3%;
+} */
+
+/* icon class */
+/* .icon{
+    visibility: hidden;
+} */
+
+/* div of every input */
+/* .inputs_every{
+    margin: 2%;
+} */
+/* form class */
+/* .form{
+    padding: 5%;
+    border: 2px inset;
+    border-radius: 15px;
+    background-image: url('../../assets/star.png') , url('../../assets/mon.png');
+    background-blend-mode: luminosity;
+    background-size: cover;
+    color: tan;
+    z-index: 3;
+    box-shadow: 20px 20px 20px rgb(56, 56, 56) ;
+} */
+
+/* Initial Section */
+/* .sec{
+    padding: 2%;
+    background-color: rgb(0, 0, 0);
+    background-size: cover;
+    z-index: -1;
+    height: 100%;
+} */
+
+/* #exp:disabled{
+    pointer-events: none;
+    background-color: black;
+} */
