@@ -45,7 +45,8 @@
       <!-- <hr> -->
       <!-- form start -->
       <hr>
-      <form [formGroup]="registrationForm" (change)="progressBar()" (ngSubmit)="registrationForm.valid && onSubmit()" novalidate>
+      <form [formGroup]="registrationForm" (change)="progressBar()" (ngSubmit)="registrationForm.valid && onSubmit()"
+        novalidate>
         <!-- <form name="formdata" ng-model="myform" ng-submit="formdata.$valid && submit()" novalidate> -->
         <div class="container">
           <h1 class="form_titles">
@@ -57,13 +58,13 @@
               <div class="mb-3 inputs_every">
                 <div class="form-group">
                   <label class="form-label">Name</label>
-                  <input type="text"  formControlName='Name' [class.nothing]="registrationForm.pristine"
+                  <input type="text" formControlName='Name' [class.nothing]="registrationForm.pristine"
                     [class.is-valid]="registrationForm.get('Name')?.valid"
                     [class.is-invalid]="registrationForm.get('Name')?.invalid && registrationForm.get('Name')?.touched && !registrationForm.get('Name')?.pristine"
                     class="form-control ">
                 </div>
-                <div *ngIf="registrationForm.get('Name')?.valid" >
-                 <p class="text-success"> Looks good!</p>
+                <div *ngIf="registrationForm.get('Name')?.valid">
+                  <p class="text-success"> Looks good!</p>
                 </div>
                 <div
                   *ngIf="registrationForm.get('Name')?.invalid && registrationForm.get('Name')?.touched && !registrationForm.get('Name')?.pristine">
@@ -72,8 +73,8 @@
                   <small [class.d-none]="!registrationForm.get('Name')?.errors?.['minlength']"
                     class="text-danger">Minimum 3
                     characters</small>
-                    <small [class.d-none]="!registrationForm.get('Name')?.errors?.['maxlength']"
-                    class="text-danger">Max 10 characters allowed</small>
+                  <small [class.d-none]="!registrationForm.get('Name')?.errors?.['maxlength']" class="text-danger">Max
+                    10 characters allowed</small>
                   <small [class.d-none]="!registrationForm.get('Name')?.errors?.['pattern']" class="text-danger">Should
                     only consist of letters </small>
                   <!-- Name : {{Name.valid}} -->
@@ -97,12 +98,12 @@
                   required> -->
 
                 <!-- <mat-form-field style="width: 90%;"> -->
-                  <!-- <mat-label>Choose a date</mat-label> -->
-                  <input  class="form-control" matInput [matDatepicker]="picker" formControlName="DOB"
-                    (dateChange)="agecal($event.value)" [max]="maxDateBirth" required readonly>
-                  <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
-                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-datepicker #picker startView="multi-year"></mat-datepicker>
+                <!-- <mat-label>Choose a date</mat-label> -->
+                <input class="form-control" matInput [matDatepicker]="picker" formControlName="DOB"
+                  (dateChange)="agecal($event.value)" [max]="maxDateBirth" required readonly>
+                <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker startView="multi-year"></mat-datepicker>
                 <!-- </mat-form-field> -->
                 <!-- max="{{ tillDate }}" -->
               </div>
@@ -139,9 +140,9 @@
                   <!-- <input type="text" [class.is-valid]="registrationForm.get('CollegeName')?.valid "
                     [class.is-invalid]="registrationForm.get('CollegeName')?.invalid && registrationForm.get('CollegeName')?.touched && !registrationForm.get('CollegeName')?.pristine"
                     formControlName='CollegeName' class="form-control"> -->
-                    <select formControlName='Degree' class="form-select">
-                      <option class="form-select" *ngFor="let x of universityList">{{x}}</option>
-                    </select>
+                  <select formControlName='Degree' class="form-select">
+                    <option class="form-select" *ngFor="let x of universityList">{{x}}</option>
+                  </select>
                 </div>
                 <!-- <div *ngIf="registrationForm.get('CollegeName')?.valid" >
                   <p class="text-success"> Looks good!</p>
@@ -201,9 +202,9 @@
                     formControlName='CompanyName' class="form-control">
 
                 </div>
-                <div *ngIf="registrationForm.get('CompanyName')?.valid" >
+                <div *ngIf="registrationForm.get('CompanyName')?.valid">
                   <p class="text-success"> Looks good!</p>
-                 </div>
+                </div>
                 <div
                   *ngIf="registrationForm.get('CompanyName')?.invalid && registrationForm.get('CompanyName')?.touched && !registrationForm.get('CompanyName')?.pristine">
                   <small [class.d-none]="!registrationForm.get('CompanyName')?.errors?.['required'] "
@@ -211,7 +212,7 @@
                   <small [class.d-none]="!registrationForm.get('CompanyName')?.errors?.['minlength']"
                     class="text-danger">Minimum 3
                     characters</small>
-                    <small [class.d-none]="!registrationForm.get('CompanyName')?.errors?.['maxlength']"
+                  <small [class.d-none]="!registrationForm.get('CompanyName')?.errors?.['maxlength']"
                     class="text-danger">Max 10 characters allowed</small>
                   <small [class.d-none]="!registrationForm.get('CompanyName')?.errors?.['pattern']"
                     class="text-danger">Should
@@ -234,12 +235,12 @@
                   formControlName='joining' required> -->
 
                 <!-- <mat-form-field  > -->
-                  <!-- <mat-label>Choose a date</mat-label> -->
-                  <input matInput [matDatepicker]="join" formControlName='DOJ' (dateChange)="expcal($event.value)"
-                    [max]="maxDateJoin" [min]="minDateJoin" class="form-control" required readonly>
-                  <!-- <mat-hint>DD/MM/YYYY</mat-hint> -->
-                  <mat-datepicker-toggle matIconSuffix [for]="join"></mat-datepicker-toggle>
-                  <mat-datepicker #join startView="multi-year"></mat-datepicker>
+                <!-- <mat-label>Choose a date</mat-label> -->
+                <input matInput [matDatepicker]="join" formControlName='DOJ' (dateChange)="expcal($event.value)"
+                  [max]="maxDateJoin" [min]="minDateJoin" class="form-control" required readonly>
+                <!-- <mat-hint>DD/MM/YYYY</mat-hint> -->
+                <mat-datepicker-toggle matIconSuffix [for]="join"></mat-datepicker-toggle>
+                <mat-datepicker #join startView="multi-year"></mat-datepicker>
                 <!-- </mat-form-field> -->
                 <!-- max="{{ tillJoinDate }}" min="{{form.date | date : 'yyyy-MM-dd'}}" -->
               </div>
@@ -247,7 +248,8 @@
             <div class="col-4 form-group">
               <div class="mb-3 inputs_every">
                 <label for="exampleInputPassword1" class="form-label">Total Years Of Experience</label>
-                <input type="number" class="form-control exp" placeholder="DOJ required" formControlName='Experience' readonly>
+                <input type="number" class="form-control exp" placeholder="DOJ required" formControlName='Experience'
+                  readonly>
               </div>
             </div>
 
@@ -258,7 +260,7 @@
           <div class="row">
             <div class="col-4">
               <!-- <button ng-show="formdata.$valid && vis" type="submit" class="btn btn-success" id="submit">Submit</button> -->
-              <button class="btn btn-success " *ngIf="registrationForm.valid && !isEditClicked" >Submit</button>
+              <button class="btn btn-success " *ngIf="registrationForm.valid && !isEditClicked">Submit</button>
 
             </div>
 
@@ -268,19 +270,19 @@
             </div>
             <div class="col-4">
               <button type="button" *ngIf="registrationForm.dirty" class="btn btn-danger"
-                (click)="refresh()" >Reset</button>
+                (click)="refresh()">Reset</button>
             </div>
 
           </div>
           <!-- Row for button end -->
         </div>
         <!-- Form end -->
-    <mat-progress-bar mode="determinate" [value]="percent"></mat-progress-bar>
+        <mat-progress-bar mode="determinate" [value]="percent"></mat-progress-bar>
 
       </form>
 
     </div>
   </section>
 
-  <app-table-section    (eventEmitter)="edit($event)" [isUpdated]="updatedAh" [parentData]="master" ></app-table-section>
+  <app-table-section (eventEmitter)="edit($event)" [isUpdated]="updatedAh" [parentData]="master"></app-table-section>
   <!-- Section for form end -->
